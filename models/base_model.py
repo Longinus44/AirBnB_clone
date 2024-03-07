@@ -6,22 +6,31 @@ import uuid
 class BaseModel():
     '''Calss defines all common attributes/methods for child classes.'''
 
-    def __init__(self):
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.datetime.now()
-        self.updated_at = datetime.datetime.now()
+    def __init__(self, *args, **kwargs):
+        '''Initialize private instace attributes.'''
+        if kwargs:
+            for key, value in kwargs.items():
+                if key == "__class__":
+                    continue;
+                else:
+                    setattr(self, key, value)
+                    print(key, value)
+        else:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.datetime.now()
+            self.updated_at = datetime.datetime.now()
 
     def save(self):
         '''Method updates `updated_at with current datetime.'''
 
-        updated_at = datetime.datetime.now()
+        self.updated_at = datetime.datetime.now()
 
     def to_dict(self):
         '''Method returns dictionary of all key/values of __dict__ of instance'''
 
         self.__dict__["__class__"] = __class__.__name__
-        str(self.created_at)
-        str(self.updated_at)
+        self.created_at.isoformat()
+        self.updated_at.isoformat()
         return (self.__dict__)
     def __str__(self):
         '''Print  string representation of object.'''
