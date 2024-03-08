@@ -2,8 +2,12 @@
 '''Base class from whom all inherit.'''
 import datetime
 import uuid
+<<<<<<< HEAD
 #from egine.file_storage import FileStorage
 from models.__init__ import storage
+=======
+import models
+>>>>>>> d2d4d39c8750e7f1c37fd8bb31bce659406dd79f
 
 class BaseModel():
     '''Calss defines all common attributes/methods for child classes.'''
@@ -21,12 +25,17 @@ class BaseModel():
             self.id = str(uuid.uuid4())
             self.created_at = datetime.datetime.now()
             self.updated_at = datetime.datetime.now()
+<<<<<<< HEAD
             storage.new(self)
+=======
+            models.storage.new(self)
+>>>>>>> d2d4d39c8750e7f1c37fd8bb31bce659406dd79f
 
     def save(self):
         '''Method updates `updated_at with current datetime.'''
 
         self.updated_at = datetime.datetime.now()
+        models.storage.save()
 
     def to_dict(self):
         '''Method returns dictionary of all key/values of __dict__ of instance'''
