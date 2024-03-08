@@ -2,6 +2,7 @@
 '''Base class from whom all inherit.'''
 import datetime
 import uuid
+import models
 
 class BaseModel():
     '''Calss defines all common attributes/methods for child classes.'''
@@ -19,11 +20,13 @@ class BaseModel():
             self.id = str(uuid.uuid4())
             self.created_at = datetime.datetime.now()
             self.updated_at = datetime.datetime.now()
+            models.storage.new(self)
 
     def save(self):
         '''Method updates `updated_at with current datetime.'''
 
         self.updated_at = datetime.datetime.now()
+        models.storage.save()
 
     def to_dict(self):
         '''Method returns dictionary of all key/values of __dict__ of instance'''
