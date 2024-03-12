@@ -3,6 +3,7 @@
 import datetime
 import uuid
 from models.__init__ import storage
+from models.__init__ import storage
 
 
 class BaseModel():
@@ -13,7 +14,7 @@ class BaseModel():
         if kwargs:
             for key, value in kwargs.items():
                 if key == "__class__":
-                    continue;
+                    continue
                 else:
                     setattr(self, key, value)
                     #print(key, value)
@@ -35,9 +36,10 @@ class BaseModel():
         self.__dict__["__class__"] = __class__.__name__
         self.created_at.isoformat()
         self.updated_at.isoformat()
-        self.created_at = self.created_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
-        self.updated_at = self.updated_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
-        return (self.__dict__)
+        self.created_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
+        self.updated_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
+        return self.__dict__
+
 
     def __str__(self):
         '''Print  string representation of object.'''

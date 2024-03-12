@@ -1,4 +1,5 @@
 #!/usr/bin/pyhton3
+
 '''Module ccan serialize and deserialize to and from JSON file.'''
 import json
 
@@ -13,8 +14,8 @@ class FileStorage():
         self.__objects = {}
 
     def all(self):
-        '''Mothod returns the directory object.'''
-        
+        '''Method displays all instaces created so far.'''
+
         if self.reload():
             return self.reload()
         else:
@@ -45,5 +46,5 @@ class FileStorage():
                 data =  f.read()
                 return json.loads(data)
 
-        except:
+        except FileNotFoundError:
             pass
