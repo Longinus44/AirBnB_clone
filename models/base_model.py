@@ -3,8 +3,7 @@
 import datetime
 import uuid
 from models.__init__ import storage
-from models.__init__ import storage
-
+from datetime import datetime
 
 class BaseModel():
     '''Calss defines all common attributes/methods for child classes.'''
@@ -17,11 +16,11 @@ class BaseModel():
                     continue
                 else:
                     setattr(self, key, value)
-                    #print(key, value)
+
         else:
             self.id = str(uuid.uuid4())
-            self.created_at = datetime.datetime.now()
-            self.updated_at = datetime.datetime.now()
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
             storage.new(self)
 
     def save(self):
@@ -36,8 +35,9 @@ class BaseModel():
         self.__dict__["__class__"] = __class__.__name__
         self.created_at.isoformat()
         self.updated_at.isoformat()
-        self.created_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
-        self.updated_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
+        self.created_at = self.created_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
+        self.updated_at = self.updated_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
+
         return self.__dict__
 
 
