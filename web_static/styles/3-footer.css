@@ -1,11 +1,15 @@
 footer {
-	background-color: white;
-	height: 60px;
-	width: 100%;
-	border-top: 1px #CCCCCC;
-	botom: 0;
-	position: absolute;
-	top: 50%;
-	left: 50%l
-	transform: translate(-50%, -50%);
+    background-color: white;
+    height: 60px;
+    width: 100%;
+    position: fixed;
+    border-top: 1px solid black;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    bottom: 0;
+}
+footer span {
+    color: black;
+    font-size: 1.2em;
 }

@@ -1,8 +1,14 @@
 footer {
-	Background-color: #00FF00;
-	height: 60px;
-	width: 100%;
-	position: absolute;
-	test-align: center;
-	bottom: 0;
+    background-color: green;
+    height: 60px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    justify-content: center;
+    align-items:  center;
+    display: flex;
+}
+footer span {
+    color:  black;
+    font-size: 1.2em;
 }
